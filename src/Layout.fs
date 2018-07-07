@@ -17,20 +17,12 @@ let layout dir (content: XmlNode list) =
             yield nav [ _class "navbar is-fixed-top has-shadow" ] [
                 div [_class "navbar-brand"] [
                     a [_class "navbar-item"; _href "/"] [
-                        img [_src "https://avatars0.githubusercontent.com/u/35305523?s=200"; _width "28"; _height "28"]
+                        img [_src "https://raw.githubusercontent.com/LambdaFactory/Tennis/master/img/icon.png"; _width "28"; _height "28"]
                     ]
                 ]
                 div [_class "navbar-menu"; _id "navMenu"] [
                     div [_class "navbar-start"] [
                         span [_class "navbar-item";] [rawText ("Current path - " + dir)]
-                    ]
-                    div [_class "navbar-end"] [
-                        p [_class "navbar-item"] [
-                            rawText "Powered by "
-                            a [_href "https://github.com/SaturnFramework/Saturn"] [rawText " Saturn"]
-                            rawText " - F# MVC framework created by "
-                            a [_href "http://lambdafactory.io"] [rawText " λFactory"]
-                        ]
                     ]
                 ]
             ]
