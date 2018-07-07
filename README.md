@@ -1,6 +1,6 @@
 # Tennis
 
-Simple, standalone, static content server for developers. Its aim is to provide simple utility for developers testing their web appliactions locally or working on sites having just static content (like HTML, CSS and JS).
+Simple, standalone, static content server for developers. Its aim is to provide simple utility for developers testing their web applications locally or working on sites having just static content (like HTML, CSS and JS).
 
 ![](https://raw.githubusercontent.com/LambdaFactory/Tennis/master/img/tennis.gif)
 
