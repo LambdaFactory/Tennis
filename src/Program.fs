@@ -2,6 +2,15 @@
 open System.IO
 open Giraffe
 open Layout
+open Argu
+
+type Arguments =
+    | [<AltCommandLine("-p")>] Port of port:int
+with
+    interface IArgParserTemplate with
+        member s.Usage =
+            match s with
+            | Port _ -> "Specify a port."
 
 let dir = Directory.GetCurrentDirectory()
 
@@ -25,7 +34,14 @@ let app port = application {
 }
 
 [<EntryPoint>]
-let main _ =
-    app 8080
-    |> run
+let main argv =
+
+    let parser = ArgumentParser.Create<Arguments>(programName = "tennis")
+    let results = parser.Parse(argv, raiseOnUsage = false, ignoreUnrecognized = true)
+    if not results.IsUsageRequested then
+        let port = results.GetResult (Port, defaultValue = 8080)
+        app port
+        |> run
+    else
+        parser.PrintUsage() |> printfn "%s"
     0

@@ -10,6 +10,11 @@ Simple, standalone, static content server for developers. Its aim is to provide 
 1. `dotnet tool install -g tennis`
 2. `tennis`
 
+## Options
+
+* `--port` | `-p` - Specifies port used for hosting server. Default value: 8080
+* `--help` - Displays list of options
+
 
 ## How to contribute
 

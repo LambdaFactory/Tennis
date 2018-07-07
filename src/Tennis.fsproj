@@ -1,7 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <Version>1.0.0</Version>
+    <Description>Simple, static content server for developers</Description>
+    <Authors>Krzysztof Cieslak</Authors>
+    <Copyright>Copyright 2018 Lambda Factory</Copyright>
+    <PackageLicenseUrl>https://github.com/LambdaFactory/Tennis/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/LambdaFactory/Tennis</RepositoryUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/LambdaFactory/Tennis/master/img/icon.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/LambdaFactory/Tennis</PackageProjectUrl>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <PackAsTool>true</PackAsTool>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Layout.fs" />
@@ -10,5 +19,6 @@
   <ItemGroup>
     <PackageReference Include="FSharp.Core" Version="4.5.0" />
     <PackageReference Include="Saturn" Version="0.6.*" />
+    <PackageReference Include="Argu" Version="5.1.0" />
   </ItemGroup>
 </Project>
