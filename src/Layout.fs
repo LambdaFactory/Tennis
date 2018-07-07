@@ -56,3 +56,16 @@ let fileList (runningDir: string) (currentDir: string) (dirs: string list) (file
             ]
         ]
     layout currentDir [s]
+
+let fileNotFound (runningDir: string) (path: string) =
+    let p = Path.GetDirectoryName (path)
+    let p = Path.GetRelativePath(runningDir,p)
+    let s =
+        section [_class "section"] [
+            div [_class "content"] [
+
+                h2 [] [rawText "File Not Found"]
+                a [_href p] [rawText "Go Back"]
+            ]
+        ]
+    layout path [s]
