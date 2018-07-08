@@ -36,12 +36,14 @@ let fileList (runningDir: string) (currentDir: string) (dirs: string list) (file
         section [_class "section"] [
             div [_class "content"] [
                 ul [] [
+                    let parent = Directory.GetParent(currentDir)
+                    let relativeDir = if parent = null then currentDir else parent.FullName
                     yield! dirs |> List.map (fun n ->
-                        let p = Path.GetRelativePath(runningDir, n)
+                        let p = Path.GetRelativePath(relativeDir, n)
                         let name = Path.GetRelativePath(currentDir, n)
                         li [] [ a [_href p] [rawText name ]])
                     yield! files |> List.map (fun n ->
-                        let p = Path.GetRelativePath(runningDir, n)
+                        let p = Path.GetRelativePath(relativeDir, n)
                         let name = Path.GetRelativePath(currentDir, n)
                         li [] [a [_href p] [rawText name ]] )
                 ]
