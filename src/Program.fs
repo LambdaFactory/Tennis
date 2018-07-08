@@ -3,6 +3,7 @@ open System.IO
 open Giraffe
 open Layout
 open Argu
+open System.Runtime.InteropServices
 
 type Arguments =
     | [<AltCommandLine("-p")>] Port of port:int
@@ -16,7 +17,9 @@ let dir = Directory.GetCurrentDirectory()
 
 let handler = scope {
     getf "%s" (fun s ->
-        let p = dir + s.Replace("/", "\\")
+        let isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
+        let s = if isWindows then s.Replace("/", "\\") else s
+        let p = dir + s
         if Directory.Exists p then
             let dirs = Directory.GetDirectories p |> Seq.toList
             let files = Directory.GetFiles(p, "*.*", SearchOption.TopDirectoryOnly) |> Seq.toList
