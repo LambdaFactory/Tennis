@@ -1,4 +1,6 @@
-# Tennis
+# Tennis 
+
+![AppVeyor](https://ci.appveyor.com/api/projects/status/github/LambdaFactory/Tennis) ![NuGet](https://img.shields.io/nuget/v/Tennis.svg?style=flat-square) ![GitHub release](https://img.shields.io/github/release/LambdaFactory/Tennis.svg?style=flat-square)
 
 Simple, standalone, static content server for developers. Its aim is to provide simple utility for developers testing their web applications locally or working on sites having just static content (like HTML, CSS and JS).
 
