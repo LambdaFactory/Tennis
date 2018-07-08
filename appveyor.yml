@@ -8,7 +8,7 @@ build_script:
   - cmd: dotnet pack -c Release -o ./nupkg
   - sh: dotnet pack -c Release -o ./nupkg
 test: off
-version: 1.0.1.{build}
+version: 1.0.2.{build}
 artifacts:
   - path: 'src\nupkg\*.nupkg'
     name: NuGet
