@@ -1,0 +1,14 @@
+image:
+  - Visual Studio 2017
+  - Ubuntu
+init:
+  - git config --global core.autocrlf input
+
+build_script:
+  - cmd: dotnet pack -c Release -o ./nupkg
+  - sh: dotnet pack -c Release -o ./nupkg
+test: off
+version: 1.0.0.{build}
+artifacts:
+  - path: 'src\nupkg\*.nupkg'
+    name: NuGet
