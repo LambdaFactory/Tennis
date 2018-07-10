@@ -15,6 +15,7 @@ Simple, standalone, static content server for developers. Its aim is to provide 
 ## Options
 
 * `--port` | `-p` - Specifies port used for hosting server. Default value: 8080
+* `--dir` | `-d` - Specifies root directory. Default is the current directory
 * `--help` - Displays list of options
 
 

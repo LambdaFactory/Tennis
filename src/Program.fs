@@ -7,17 +7,19 @@ open System.Runtime.InteropServices
 
 type Arguments =
     | [<AltCommandLine("-p")>] Port of port:int
+    | [<AltCommandLine("-d")>] Dir of dir:string
 with
     interface IArgParserTemplate with
         member s.Usage =
             match s with
             | Port _ -> "Specify a port."
+            | Dir _ -> "Specify a root directory."
 
-let dir = Directory.GetCurrentDirectory()
 
-let handler = scope {
+let handler dir = scope {
     getf "%s" (fun s ->
         let isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
+        let s = if s = null then "/" else s
         let s = if isWindows then s.Replace("/", "\\") else s
         let p = dir + s
         if Directory.Exists p then
@@ -31,9 +33,9 @@ let handler = scope {
     )
 }
 
-let app port = application {
+let app port dir = application {
     url (sprintf "http://0.0.0.0:%d/" port)
-    router handler
+    router (handler dir)
 }
 
 [<EntryPoint>]
@@ -43,7 +45,8 @@ let main argv =
     let results = parser.Parse(argv, raiseOnUsage = false, ignoreUnrecognized = true)
     if not results.IsUsageRequested then
         let port = results.GetResult (Port, defaultValue = 8080)
-        app port
+        let dir = results.GetResult (Dir, defaultValue =  Directory.GetCurrentDirectory())
+        app port dir
         |> run
     else
         parser.PrintUsage() |> printfn "%s"
